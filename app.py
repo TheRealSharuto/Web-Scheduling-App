@@ -73,7 +73,7 @@ def register():
                   'error')
         else:
             # Check if the username already exists in the database 
-            cursor.execute("SELECT * FROM Users WHERE username = %s" (username))
+            cursor.execute("SELECT * FROM Users WHERE username = %s", (username,))
             results = cursor.fetchall()
             if results:
                 flash('Username already exists. Choose another username or return to Login via below link.', 'error')
@@ -95,7 +95,7 @@ def register():
                 hashed_password = hashlib.sha256(password.encode()).hexdigest()
 
                 # add username and hashed password to database
-                cursor.execute("INSERT INTO Users (name, username, password) VALUES (%s, %s)", name, username, hashed_password)
+                cursor.execute("INSERT INTO Users (name, username, password) VALUES (%s, %s, %s)", (name, username, hashed_password))
 
                 #commit db and display success message
                 db.commit()
@@ -119,7 +119,7 @@ def login():
         username = request.form['username']
         password = request.form['password']
 
-        cursor.execute("SELECT password FROM Users WHERE username =  %s", (username))
+        cursor.execute("SELECT password FROM Users WHERE username =  %s", (username,))
         db_password = cursor.fetchone()
         
         #if that password, and therefore account, exists
