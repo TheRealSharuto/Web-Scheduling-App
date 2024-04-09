@@ -45,7 +45,6 @@ security_handler.setFormatter(security_formatter)
 security_logger.addHandler(security_handler)
 
 # Store user data in a file
-USER_DATA_FILE = 'user_data.txt'
 SECURITY_DATA_FILE = 'security_log.txt'
 
 # Logger for failed login attempts
@@ -129,7 +128,12 @@ def login():
             # Hash the provided password for comparison
             hashed_password = hashlib.sha256(password.encode()).hexdigest()
 
-            if db_password != hashed_password:
+            if db_password == hashed_password:
+                session['logged_in'] = True
+                session['username'] = username
+                return redirect(url_for("home"))  # Redirect to the home page after successful login
+                
+            else:
                 # Log the failed login attempt
                 failed_login_message = (f'Failed login attempt for username: {username} from '
                                     f'IP: {request.remote_addr}')
@@ -230,19 +234,12 @@ def update_password():
 
 @app.route('/')
 def home():
-    """
-    Render the home page of the astronomy website.
-    Redirects the user to the login page if they are not logged in.
-
-    Returns:
-        rendered template with current time
-    """
-    # Check if the user is logged in, if not, redirect to the login page
-    if not session.get('logged_in'):
+    if 'logged_in' in session:
+        current_time = datetime.now()
+        return render_template('index.html', current_time=current_time)
+    else:
         return redirect(url_for('login'))
-
-    current_time = datetime.now()
-    return render_template('index.html', current_time=current_time)
+   
 
 
 @app.route('/telescope_time')
