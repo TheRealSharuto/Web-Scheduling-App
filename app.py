@@ -175,8 +175,10 @@ def update_password():
         username = session.get("username")
 
         hashed_current_password = hashlib.sha256(current_password.encode()).hexdigest()
-        cursor.execute("SELECT password FROM Users WHERE username = %s", (username))
-        db_password = cursor.fetchone()
+
+        cursor.execute("SELECT password FROM Users WHERE username =  %s", (username,))
+        row = cursor.fetchone()
+        db_password = row[0]
         
         # Ensure current password and database password are a match
         if db_password != hashed_current_password:
@@ -253,14 +255,7 @@ def telescope_time():
     # Check if the user is logged in, if not, redirect to the login page
     if not session.get('logged_in'):
         return redirect(url_for('login'))
-
-    name = request.form['name']
-    date = request.form['date']
-    time = request.form['time']
     
-    cursor.execute("")
-
-
     return render_template('telescope_time.html')
 
 
