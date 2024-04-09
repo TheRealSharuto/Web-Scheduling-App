@@ -120,13 +120,14 @@ def login():
         password = request.form['password']
 
         cursor.execute("SELECT password FROM Users WHERE username =  %s", (username,))
-        db_password = cursor.fetchone()
+        row = cursor.fetchone()
+        db_password = row[0]
         
         #if that password, and therefore account, exists
         if db_password:
 
             # Hash the provided password for comparison
-            hashed_password = hashlib.sha256(db_password.encode()).hexdigest()
+            hashed_password = hashlib.sha256(password.encode()).hexdigest()
 
             if db_password != hashed_password:
                 # Log the failed login attempt
