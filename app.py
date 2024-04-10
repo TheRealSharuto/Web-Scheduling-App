@@ -275,7 +275,10 @@ def home():
         return redirect(url_for('login'))
    
 
-
+    date = request.form['date']
+    time = request.form['time']
+    
+    cursor.execute("")
 
 
 
@@ -291,6 +294,7 @@ def planetarium():
     if not session.get('logged_in'):
         return redirect(url_for('login'))
     
+
     if request.method == 'POST':
         name = request.form['name']
         date = request.form['date']
@@ -306,6 +310,12 @@ def planetarium():
 
         db.commit()
         flash('Reservation successful!', 'success')
+=======
+    # This may not be needed if able to get name from logged in token  
+    # name = request.form['name']
+    date = request.form['date']
+    time = request.form['time']
+
 
     return render_template('planetarium.html')
 

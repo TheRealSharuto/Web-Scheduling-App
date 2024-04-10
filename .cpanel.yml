@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/cmsc495/public_html/astro
+    - /bin/cp -r * $DEPLOYPATH
