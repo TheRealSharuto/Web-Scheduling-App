@@ -95,7 +95,7 @@ def register():
 
                 # add username and hashed password to database
                 cursor.execute("INSERT INTO Users (name, username, password) VALUES (%s, %s, %s)", (name, username, hashed_password))
-
+                
                 #commit db and display success message
                 db.commit()
                 flash('Registration successful!', 'success')
@@ -149,6 +149,38 @@ def login():
                 flash('Account not found', 'error')
 
     return render_template('login.html', reg_message=reg_message)
+
+@app.route('/telescope_time', methods=['POST', 'GET'])
+def telescope_time():
+    """
+    Render the telescope time sign-up page.
+
+    Returns:
+        rendered template for telescope time page
+    """
+    # Check if the user is logged in, if not, redirect to the login page
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
+
+    if request.method == 'POST':
+        name = request.form['name']
+        date = request.form['date']
+        time = request.form['time']
+
+        #first get the userID associated with that name from the Users table
+        cursor.execute("SELECT userID FROM Users WHERE name = %s", (name,))
+        row = cursor.fetchone()
+        userID = row[0]
+
+        #fill that userID into the row with that date and time which are formatted into strings
+        cursor.execute("UPDATE Telescope SET userID = %s WHERE date = %s AND time = %s", (userID, str(date), str(time)))
+
+        db.commit()
+        flash('Reservation successful!', 'success')
+
+    
+
+    return render_template('telescope_time.html')
 
 
 @app.route('/update_password', methods=['GET', 'POST'])
@@ -244,19 +276,7 @@ def home():
    
 
 
-@app.route('/telescope_time')
-def telescope_time():
-    """
-    Render the telescope time sign-up page.
 
-    Returns:
-        rendered template for telescope time page
-    """
-    # Check if the user is logged in, if not, redirect to the login page
-    if not session.get('logged_in'):
-        return redirect(url_for('login'))
-    
-    return render_template('telescope_time.html')
 
 
 @app.route('/planetarium')
@@ -270,6 +290,22 @@ def planetarium():
     # Check if the user is logged in, if not, redirect to the login page
     if not session.get('logged_in'):
         return redirect(url_for('login'))
+    
+    if request.method == 'POST':
+        name = request.form['name']
+        date = request.form['date']
+        time = request.form['time']
+
+        #first get the userID associated with that name from the Users table
+        cursor.execute("SELECT userID FROM Users WHERE name = %s", (name,))
+        row = cursor.fetchone()
+        userID = row[0]
+
+        #fill that userID into the row with that date and time which are formatted into strings
+        cursor.execute("UPDATE Telescope SET userID = %s WHERE date = %s AND time = %s", (userID, str(date), str(time)))
+
+        db.commit()
+        flash('Reservation successful!', 'success')
 
     return render_template('planetarium.html')
 

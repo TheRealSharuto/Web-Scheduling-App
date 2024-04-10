@@ -10,7 +10,20 @@
         advisor's name at the end. We will be contacting them for the financial details and to
         confirm your eligibility to use the scope.</p>
     <h2>Reservation Details</h2>
-    <form>
+            
+
+    <!-- Jinja2 sorcery to display flash messages -->
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    <div class="flash-messages">
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+{% endif %}
+{% endwith %}
+
+    <form method="post"> <!--be sure to add this part if the user is submitting some data with the form-->
         <label for="name">Name:</label>
         <input type="text" id="name" name="name"><br><br>
 
