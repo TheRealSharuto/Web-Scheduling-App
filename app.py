@@ -256,7 +256,8 @@ def telescope_time():
     if not session.get('logged_in'):
         return redirect(url_for('login'))
 
-    name = request.form['name']
+    # This may not be needed if able to get name from logged in token  
+    # name = request.form['name']
     date = request.form['date']
     time = request.form['time']
     
@@ -277,6 +278,11 @@ def planetarium():
     # Check if the user is logged in, if not, redirect to the login page
     if not session.get('logged_in'):
         return redirect(url_for('login'))
+    
+    # This may not be needed if able to get name from logged in token  
+    # name = request.form['name']
+    date = request.form['date']
+    time = request.form['time']
 
     return render_template('planetarium.html')
 
