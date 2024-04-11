@@ -273,13 +273,6 @@ def home():
         return render_template('index.html', current_time=current_time)
     else:
         return redirect(url_for('login'))
-   
-
-    date = request.form['date']
-    time = request.form['time']
-    
-    cursor.execute("")
-
 
 
 @app.route('/planetarium')
@@ -310,7 +303,7 @@ def planetarium():
 
         db.commit()
         flash('Reservation successful!', 'success')
-=======
+
     # This may not be needed if able to get name from logged in token  
     # name = request.form['name']
     date = request.form['date']
