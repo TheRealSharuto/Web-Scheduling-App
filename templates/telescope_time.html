@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="">
 <head>
@@ -6,11 +7,8 @@
  </head>
 <body>
     <h1 class="center-heading">Sign Up for Telescope Time</h1>
-    <p>Complete the form below to reserve telescope time.</p>
-    <h2>Reservation Details</h2>
-            
 
-    <!-- Jinja2 sorcery to display flash messages -->
+        <!-- Jinja2 sorcery to display flash messages -->
 {% with messages = get_flashed_messages() %}
 {% if messages %}
     <div class="flash-messages">
@@ -21,18 +19,22 @@
 {% endif %}
 {% endwith %}
 
-<form method="post"> <!--be sure to add this part if the user is submitting some data with the form-->
-   <label for="name">Name:</label>
-   <input type="text" id="name" name="name"><br><br>
+    <p>Complete the form below to reserve telescope time. Be sure to include your academic
+        advisor's name at the end. We will be contacting them for the financial details and to
+        confirm your eligibility to use the scope.</p>
+    
+        <h2>Reservation Details</h2>
+        
+    <form method="post"> <!--be sure to add this part if the user is submitting some data with the form-->
 
-   <label for="date">Desired Start Date:</label>
-   <input type="date" id="date" name="date"><br><br>
+        <label for="date">Desired Start Date:</label>
+        <input type="date" id="date" name="date"><br><br>
 
-   <label for="time">Time:</label>
-   <input type="time" id="time" name="time"><br><br>
+        <label for="time">Time:</label>
+        <input type="time" id="time" name="time"><br><br>
 
-   <input type="submit" value="Submit">
-</form>
+        <input type="submit" value="Submit">
+    </form>
 
     <h3>Back to Home</h3>
     <a href="/">Back to Home</a>
