@@ -39,12 +39,15 @@
         </div>
         <!-- Form content -->
         <div class="form-container">
-            <form>
-                <label for="date">Desired Start Date:</label>
-                <input type="date" id="date" name="Desired Date"><br><br>
-        
-                <label for="time">Desired Start Time:</label>
-                <input type="text" id="timeSlot" name="Desired Time Slot"><br><br>
+            <form method="post"> <!--be sure to add this part if the user is submitting some data with the form-->
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name"><br><br>
+                
+                <label for="date">Desired Date:</label>
+                <input type="date" id="date" name="date"><br><br>
+                
+                <label for="time">Time:</label>
+                <input type="time" id="time" name="time"><br><br>
 
                 <input type="submit" value="Submit">
             </form>
