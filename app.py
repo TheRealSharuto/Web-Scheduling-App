@@ -163,14 +163,16 @@ def telescope_time():
         return redirect(url_for('login'))
 
     if request.method == 'POST':
-        name = request.form['name']
         date = request.form['date']
         time = request.form['time']
 
+        username = session['username']
+
         #first get the userID associated with that name from the Users table
-        cursor.execute("SELECT userID FROM Users WHERE name = %s", (name,))
+        cursor.execute("SELECT userID FROM Users WHERE username = %s", (username,))
         row = cursor.fetchone()
         userID = row[0]
+
 
         #fill that userID into the row with that date and time which are formatted into strings
         cursor.execute("UPDATE Telescope SET userID = %s WHERE date = %s AND time = %s", (userID, str(date), str(time)))
@@ -273,9 +275,10 @@ def home():
         return render_template('index.html', current_time=current_time)
     else:
         return redirect(url_for('login'))
+   
 
 
-@app.route('/planetarium')
+@app.route('/planetarium', methods=['POST', 'GET'])
 def planetarium():
     """
     Render the planetarium volunteer page.
@@ -287,28 +290,23 @@ def planetarium():
     if not session.get('logged_in'):
         return redirect(url_for('login'))
     
-
+     
     if request.method == 'POST':
-        name = request.form['name']
         date = request.form['date']
         time = request.form['time']
 
+        username = session['username']
+
         #first get the userID associated with that name from the Users table
-        cursor.execute("SELECT userID FROM Users WHERE name = %s", (name,))
+        cursor.execute("SELECT userID FROM Users WHERE username = %s", (username,))
         row = cursor.fetchone()
         userID = row[0]
 
         #fill that userID into the row with that date and time which are formatted into strings
-        cursor.execute("UPDATE Telescope SET userID = %s WHERE date = %s AND time = %s", (userID, str(date), str(time)))
+        cursor.execute("UPDATE Planetarium SET userID = %s WHERE date = %s AND time = %s", (userID, str(date), str(time)))
 
         db.commit()
         flash('Reservation successful!', 'success')
-
-    # This may not be needed if able to get name from logged in token  
-    # name = request.form['name']
-    date = request.form['date']
-    time = request.form['time']
-
 
     return render_template('planetarium.html')
 
