@@ -1,9 +1,14 @@
-/* John Leckie, SDEV 300, 22 Sep '23
+/*
 This is the stylesheet for the astronomy website. It controls the layout and appearance of elements
 common to multiple pages.
  */
 
 /* Global styles */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
     font-family: Arial, sans-serif;
     background-color: #000000;
