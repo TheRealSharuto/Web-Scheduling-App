@@ -7,7 +7,21 @@
 
 {% block body %}
     <h1 class="center-heading">Volunteer for the Planetarium</h1>
+
+        <!-- Jinja2 sorcery to display flash messages -->
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    <div class="flash-messages">
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+{% endif %}
+{% endwith %}
+
     <p>Join us in inspiring students with the wonders of the universe!</p>
+
+    
  <!-- Wrap the content in a container for layout -->
     <div class="content-container">
         <!-- Text content to the right of the image -->
@@ -24,12 +38,13 @@
         </div>
         <!-- Form content -->
         <div class="form-container">
-            <form>
-                <label for="date">Desired Start Date:</label>
-                <input type="date" id="date" name="Desired Date"><br><br>
-        
-                <label for="time">Desired Start Time:</label>
-                <input type="text" id="timeSlot" name="Desired Time Slot"><br><br>
+            <form method="post"> <!--be sure to add this part if the user is submitting some data with the form-->
+                
+                <label for="date">Desired Date:</label>
+                <input type="date" id="date" name="date"><br><br>
+                
+                <label for="time">Time:</label>
+                <input type="time" id="time" name="time"><br><br>
 
                 <input type="submit" value="Submit">
             </form>

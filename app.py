@@ -45,7 +45,6 @@ security_handler.setFormatter(security_formatter)
 security_logger.addHandler(security_handler)
 
 # Store user data in a file
-USER_DATA_FILE = 'user_data.txt'
 SECURITY_DATA_FILE = 'security_log.txt'
 
 # Logger for failed login attempts
@@ -73,7 +72,7 @@ def register():
                   'error')
         else:
             # Check if the username already exists in the database 
-            cursor.execute("SELECT * FROM Users WHERE username = %s" (username))
+            cursor.execute("SELECT * FROM Users WHERE username = %s", (username,))
             results = cursor.fetchall()
             if results:
                 flash('Username already exists. Choose another username or return to Login via below link.', 'error')
@@ -95,8 +94,8 @@ def register():
                 hashed_password = hashlib.sha256(password.encode()).hexdigest()
 
                 # add username and hashed password to database
-                cursor.execute("INSERT INTO Users (name, username, password) VALUES (%s, %s)", name, username, hashed_password)
-
+                cursor.execute("INSERT INTO Users (name, username, password) VALUES (%s, %s, %s)", (name, username, hashed_password))
+                
                 #commit db and display success message
                 db.commit()
                 flash('Registration successful!', 'success')
@@ -119,16 +118,22 @@ def login():
         username = request.form['username']
         password = request.form['password']
 
-        cursor.execute("SELECT password FROM Users WHERE username =  %s", (username))
-        db_password = cursor.fetchone()
+        cursor.execute("SELECT password FROM Users WHERE username =  %s", (username,))
+        row = cursor.fetchone()
+        db_password = row[0]
         
         #if that password, and therefore account, exists
         if db_password:
 
             # Hash the provided password for comparison
-            hashed_password = hashlib.sha256(db_password.encode()).hexdigest()
+            hashed_password = hashlib.sha256(password.encode()).hexdigest()
 
-            if db_password != hashed_password:
+            if db_password == hashed_password:
+                session['logged_in'] = True
+                session['username'] = username
+                return redirect(url_for("home"))  # Redirect to the home page after successful login
+                
+            else:
                 # Log the failed login attempt
                 failed_login_message = (f'Failed login attempt for username: {username} from '
                                     f'IP: {request.remote_addr}')
@@ -144,6 +149,40 @@ def login():
                 flash('Account not found', 'error')
 
     return render_template('login.html', reg_message=reg_message)
+
+@app.route('/telescope_time', methods=['POST', 'GET'])
+def telescope_time():
+    """
+    Render the telescope time sign-up page.
+
+    Returns:
+        rendered template for telescope time page
+    """
+    # Check if the user is logged in, if not, redirect to the login page
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
+
+    if request.method == 'POST':
+        date = request.form['date']
+        time = request.form['time']
+
+        username = session['username']
+
+        #first get the userID associated with that name from the Users table
+        cursor.execute("SELECT userID FROM Users WHERE username = %s", (username,))
+        row = cursor.fetchone()
+        userID = row[0]
+
+
+        #fill that userID into the row with that date and time which are formatted into strings
+        cursor.execute("UPDATE Telescope SET userID = %s WHERE date = %s AND time = %s", (userID, str(date), str(time)))
+
+        db.commit()
+        flash('Reservation successful!', 'success')
+
+    
+
+    return render_template('telescope_time.html')
 
 
 @app.route('/update_password', methods=['GET', 'POST'])
@@ -170,8 +209,10 @@ def update_password():
         username = session.get("username")
 
         hashed_current_password = hashlib.sha256(current_password.encode()).hexdigest()
-        cursor.execute("SELECT password FROM Users WHERE username = %s", (username))
-        db_password = cursor.fetchone()
+
+        cursor.execute("SELECT password FROM Users WHERE username =  %s", (username,))
+        row = cursor.fetchone()
+        db_password = row[0]
         
         # Ensure current password and database password are a match
         if db_password != hashed_current_password:
@@ -229,45 +270,15 @@ def update_password():
 
 @app.route('/')
 def home():
-    """
-    Render the home page of the astronomy website.
-    Redirects the user to the login page if they are not logged in.
-
-    Returns:
-        rendered template with current time
-    """
-    # Check if the user is logged in, if not, redirect to the login page
-    if not session.get('logged_in'):
+    if 'logged_in' in session:
+        current_time = datetime.now()
+        return render_template('index.html', current_time=current_time)
+    else:
         return redirect(url_for('login'))
-
-    current_time = datetime.now()
-    return render_template('index.html', current_time=current_time)
+   
 
 
-@app.route('/telescope_time')
-def telescope_time():
-    """
-    Render the telescope time sign-up page.
-
-    Returns:
-        rendered template for telescope time page
-    """
-    # Check if the user is logged in, if not, redirect to the login page
-    if not session.get('logged_in'):
-        return redirect(url_for('login'))
-
-    # This may not be needed if able to get name from logged in token  
-    # name = request.form['name']
-    date = request.form['date']
-    time = request.form['time']
-    
-    cursor.execute("")
-
-
-    return render_template('telescope_time.html')
-
-
-@app.route('/planetarium')
+@app.route('/planetarium', methods=['POST', 'GET'])
 def planetarium():
     """
     Render the planetarium volunteer page.
@@ -279,10 +290,23 @@ def planetarium():
     if not session.get('logged_in'):
         return redirect(url_for('login'))
     
-    # This may not be needed if able to get name from logged in token  
-    # name = request.form['name']
-    date = request.form['date']
-    time = request.form['time']
+     
+    if request.method == 'POST':
+        date = request.form['date']
+        time = request.form['time']
+
+        username = session['username']
+
+        #first get the userID associated with that name from the Users table
+        cursor.execute("SELECT userID FROM Users WHERE username = %s", (username,))
+        row = cursor.fetchone()
+        userID = row[0]
+
+        #fill that userID into the row with that date and time which are formatted into strings
+        cursor.execute("UPDATE Planetarium SET userID = %s WHERE date = %s AND time = %s", (userID, str(date), str(time)))
+
+        db.commit()
+        flash('Reservation successful!', 'success')
 
     return render_template('planetarium.html')
 

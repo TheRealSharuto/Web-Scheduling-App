@@ -1,5 +1,9 @@
-2023-10-04 11:49:38,576 - Failed login attempt for username: jleckie from IP: 127.0.0.1
-2023-10-04 11:49:52,118 - Failed login attempt for username: Ighnot from IP: 127.0.0.1
-2023-10-04 12:04:44,226 - Failed login attempt for username: Ighnot from IP: 127.0.0.1
-2023-10-04 12:04:55,768 - Failed login attempt for username: Ighnot from IP: 127.0.0.1
-2023-10-04 12:05:11,700 - Failed login attempt for username: Ighnot from IP: 127.0.0.1
+
+2024-04-09 08:11:58,587 - Failed login attempt for username: user1 user1 0a041b9462caa4a31bac3567e0b6e6fd9100787db2ab433d96f6d178cabfce90 da6e06df44b67934063816304c4bf275c994a8dab92c8e863adc3fb1eef5e873 from IP: 127.0.0.1
+2024-04-09 13:22:13,775 - Failed login attempt for username: user from IP: 127.0.0.1
+2024-04-09 13:56:17,033 - Failed password change attempt for username: user1 from IP: 127.0.0.1
+2024-04-09 14:15:57,172 - Failed login attempt for username: user1 from IP: 127.0.0.1
+2024-04-10 18:42:13,156 - Failed login attempt for username: user1 from IP: 127.0.0.1
+2024-04-11 12:31:40,542 - Failed login attempt for username: user1 from IP: 127.0.0.1
+2024-04-11 12:33:50,567 - Failed login attempt for username: user1 from IP: 127.0.0.1
+2024-04-11 12:42:17,546 - Failed login attempt for username: user1 from IP: 127.0.0.1
