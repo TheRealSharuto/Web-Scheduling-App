@@ -1,11 +1,11 @@
-<!-- Code from: templates/register.html -->
-<!DOCTYPE html>
-<html lang="">
-<head>
-    <title>Register for a University Astronomy Account</title>
-    <link rel="stylesheet" href="../static/styles.css">
-</head>
-<body>
+<!-- The following is from the base.html, which ensures the navbar will be on each page without duplicate code -->
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
     <h1 class="center-heading">Register for an Account</h1>
 
 <!-- Jinja2 sorcery to display flash messages -->
@@ -53,5 +53,4 @@
     </form>
     <!-- Just in case a mistake was made and return to login is desired -->
     <p>Already have an account? <a href="{{ url_for('login') }}">Return to Login</a></p>
-</body>
-</html>
+    {% endblock %}
