@@ -1,9 +1,20 @@
-/* John Leckie, SDEV 300, 22 Sep '23
+/*
 This is the stylesheet for the astronomy website. It controls the layout and appearance of elements
 common to multiple pages.
+
+ONLY EDIT CSS HERE, DO NOT EDIT THE OUTPUT.CSS FILE. 
+
+DO NOT EDIT ANY FILES THAT END IN .JSON.
+
+DO NOT EDIT TAILWIND.CONFIG.JS FILE.
  */
 
 /* Global styles */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
     font-family: Arial, sans-serif;
     background-color: #000000;
@@ -203,3 +214,38 @@ a:hover {
     text-decoration: underline;
 }
 
+.image-container {
+    position: fixed;
+    bottom: 10px;
+    right: 50px;
+    width: 400px;
+    height: 400px;
+    overflow: hidden;
+}
+/* Styles for the rotating images */
+.image-container img {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+.image-container img:first-child {
+    opacity: 1;
+}
+
+/* planetarium */
+
+ /* Styles for the layout */
+ .content-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.content-container .text-content {
+    width: 50%;
+}
+
+.content-container .form-container {
+    width: 35%;
+}

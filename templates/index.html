@@ -1,34 +1,11 @@
-testing purposes only
+<!-- The following is from the base.html, which ensures the navbar will be on each page without duplicate code -->
+{% extends 'base.html' %}
 
-<!DOCTYPE html>
-<html lang="">
-<head>
-    <title>Astronomy Website</title>
-    <link rel="stylesheet" href="../static/styles.css">
-    <style>
-        /* Styles for the fancy image container */
-        .image-container {
-            position: fixed;
-            bottom: 10px;
-            right: 50px;
-            width: 400px;
-            height: 400px;
-            overflow: hidden;
-        }
-        /* Styles for the rotating images */
-        .image-container img {
-            width: 100%;
-            height: auto;
-            position: absolute;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-        .image-container img:first-child {
-            opacity: 1;
-        }
-    </style>
-</head>
-<body>
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
 
 <!-- Jinja2 sorcery to display flash messages -->
 {% with messages = get_flashed_messages() %}
@@ -80,19 +57,7 @@ testing purposes only
         <img src="/static/images/image5.jpg" alt="Image 5">
     </div>
 
-    <script>
-        // JavaScript to rotate images
-        const images = document.querySelectorAll('.image-container img');
-        let currentImageIndex = 0;
-
-        function rotateImages() {
-            images[currentImageIndex].style.opacity = 0;
-            currentImageIndex = (currentImageIndex + 1) % images.length;
-            images[currentImageIndex].style.opacity = 1;
-        }
-
-        setInterval(rotateImages, 3000); // Change image every 3 seconds
-    </script>
+    
 
     <div class="time-strip">
         <!-- Display current date and time with seconds truncated -->
@@ -107,6 +72,5 @@ testing purposes only
     <div class="logout-link"><p>Password reset is available <a href="{{ url_for('update_password')
             }}">Here.</a></p>
     </div>
-
-</body>
-</html>
+    <script src="scripts.js"></script>
+    {% endblock %}

@@ -1,26 +1,11 @@
-<!DOCTYPE html>
-<html lang="">
-<style>
-        /* Styles for the layout */
-        .content-container {
-            display: flex;
-            justify-content: space-between;
-        }
+<!-- The following is from the base.html, which ensures the navbar will be on each page without duplicate code -->
+{% extends 'base.html' %}
 
-        .content-container .text-content {
-            width: 50%;
-        }
+{% block head %}
 
-        .content-container .form-container {
-            width: 35%;
-        }
-</style>
+{% endblock %}
 
-<head>
-    <title>Volunteer for the Planetarium</title>
-    <link rel="stylesheet" href="../static/styles.css">
-</head>
-<body>
+{% block body %}
     <h1 class="center-heading">Volunteer for the Planetarium</h1>
 
         <!-- Jinja2 sorcery to display flash messages -->
@@ -77,5 +62,4 @@
     <a href="{{ url_for('logout') }}">Logout</a>
 </div>
 
-</body>
-</html>
+{% endblock %}
