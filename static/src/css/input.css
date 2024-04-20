@@ -134,6 +134,7 @@ body {
     background-image: url('/static/images/6t3m7cg78dha1.jpg');
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center center;
     background-color: rgba(0, 0, 0, 1.0);
 }
 
@@ -207,11 +208,9 @@ p {
 
 /* Styles for the form container */
 form {
-    background-color: darkslategray;
     color: white;
     padding: 20px;
     border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     max-width: 400px;
     margin: 0 auto;
     /* margin-left: -100px; */
@@ -359,3 +358,24 @@ a:hover {
 .content-container .form-container {
     width: 35%;
 }
+
+/* REGISTRATION PAGE START */
+
+#reg-left-panel {
+  background-image: url('/static/images/reg-background.png');
+  background-color: black;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#reg-right-panel {
+  margin: 0;
+  background: linear-gradient(rgba(0,0,0, 0.25), rgba(0,0,0, 0.25));
+}
+form#reg-form {
+  padding: 40px;
+} 
+
+
+/* REGISTRATION PAGE END */
