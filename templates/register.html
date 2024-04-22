@@ -79,14 +79,28 @@
     </div>
     <div id="reg-right-panel" class="col-span-2">
         <form id="reg-form" class="space-y-6 bg-transparent" method="post">
-            <label for="username">Username</label>
-            <input name="username" id="username" required>
-            <label for="name">Name</label>
-            <input name="name" id="name" required>
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" required>
-            <label for="confirm_password">Confirm Password</label>
-            <input type="password" name="confirm_password" id="confirm_password" required>
+            <div class="flex flex-col">
+                <div class="form-field">
+                    <label for="username">Username</label>
+                    <br>
+                    <input name="username" id="username" placeholder="Username" required>
+                </div>
+                <div class="form-field">
+                    <label for="name">Name</label>
+                    <br>
+                    <input placeholder="Name" name="name" id="name" required>
+                </div>
+                <div class="form-field">
+                    <label for="password">Password</label>
+                    <br>
+                    <input placeholder="f023; Password" type="password" name="password" id="password" required>
+                </div>
+                <div class="form-field">
+                    <label for="confirm_password">Confirm Password</label>
+                    <br>
+                    <input placeholder="Confirm Password" type="password" name="confirm_password" id="confirm_password" required>
+                </div>
+            </div>
             <p>Password must meet the following criteria:</p>
             <ul>
                 <li>At least 12 characters long</li>

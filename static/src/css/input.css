@@ -131,7 +131,7 @@ body {
     background-color: #000000;
     margin: 0 50px;
     padding: 0;
-    background-image: url('/static/images/6t3m7cg78dha1.jpg');
+    background-image: linear-gradient(rgba(0,0,0, 0.25), rgba(0,0,0, 0.25)), url('/static/images/6t3m7cg78dha1.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -211,11 +211,6 @@ form {
     color: white;
     padding: 20px;
     border-radius: 5px;
-    max-width: 400px;
-    margin: 0 auto;
-    /* margin-left: -100px; */
-    margin-top: 60px;
-    z-index: 9999;
 }
 
 label {
@@ -377,5 +372,22 @@ form#reg-form {
   padding: 40px;
 } 
 
+.form-field {
+  @apply py-[25px];
+}
 
+.form-field input, .form-field label {
+  @apply my-[10px];
+}
+
+.form-field input {
+  background-color: #484747;
+  padding: 10px;
+  border-radius: 10px;;
+}
+
+.form-field input::placeholder {
+  color: white;
+  @apply barlow-light;
+}
 /* REGISTRATION PAGE END */
