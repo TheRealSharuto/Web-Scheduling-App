@@ -6,7 +6,6 @@
 {% endblock %}
 
 {% block body %}
-<h1 class="center-heading">Register for an Account</h1>
 
 <!-- Jinja2 sorcery to display flash messages -->
 {% with messages = get_flashed_messages() %}
@@ -70,50 +69,65 @@
             </svg>
         </div>
         <div id="reg-callout">
-            <p class="text-lg text-white text-decoration:bold">Lift off!</p>
+            <p class="text-center text-2xl barlow-bold text-white text-decoration:bold" id="lift-off">Lift off!</p>
         </div>
         <div id="signin-button">
-            <p class="text-md">Already have an account?</p>
-            <button class="bg-white text-black text-md text-center py-2 px-4 rounded">Sign in</button>
+            <p id="already-acct" class="text-md">Already have an account?</p>
+            <a href="{{ url_for('login') }}">
+                <button id="signin-btn" class="btn btn-white">Sign in</button>
+            </a>
         </div>
     </div>
     <div id="reg-right-panel" class="col-span-2">
-        <form id="reg-form" class="space-y-6 bg-transparent" method="post">
+        <form id="reg-form" class="space-y-6 bg-transparent my-20" method="post">
             <div class="flex flex-col">
-                <div class="form-field">
-                    <label for="username">Username</label>
-                    <br>
-                    <input name="username" id="username" placeholder="Username" required>
+                <div class="text-center">
+                    <h1>Create Account</h1>
                 </div>
                 <div class="form-field">
-                    <label for="name">Name</label>
+                    <label for="username" class="accessibility-hidden" aria-label="Enter Username">Username</label>
                     <br>
-                    <input placeholder="Name" name="name" id="name" required>
+                    <div class="reg-input">
+                        <input name="username" id="username" placeholder="Username" required>
+                    </div>
                 </div>
                 <div class="form-field">
-                    <label for="password">Password</label>
+                    <label for="name" class="accessibility-hidden" aria-label="Enter Name">Name</label>
                     <br>
-                    <input placeholder="f023; Password" type="password" name="password" id="password" required>
+                    <div class="reg-input">
+                        <input placeholder="Name" name="name" id="name" required>
+                    </div>
                 </div>
                 <div class="form-field">
-                    <label for="confirm_password">Confirm Password</label>
+                    <label for="password" class="accessibility-hidden" aria-label="Enter Password">Password</label>
                     <br>
-                    <input placeholder="Confirm Password" type="password" name="confirm_password" id="confirm_password" required>
+                    <div class="reg-input">
+                        <input placeholder="f023; Password" type="password" name="password" id="password" required>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <label for="confirm_password" class="accessibility-hidden" aria-label="Confirm Password">Confirm
+                        Password</label>
+                    <br>
+                    <div class="reg-input">
+                        <input placeholder="Confirm Password" type="password" name="confirm_password"
+                            id="confirm_password" required>
+                    </div>
                 </div>
             </div>
-            <p>Password must meet the following criteria:</p>
-            <ul>
-                <li>At least 12 characters long</li>
-                <li>Contains at least one uppercase letter</li>
-                <li>Contains at least one lowercase letter</li>
-                <li>Contains at least one digit</li>
-                <li>Contains at least one special character</li>
-            </ul>
-            (Usernames and Passwords are CaSe SeNsItIvE!)
-            <input type="submit" value="Register">
+            <details>
+                <summary>Click to see password criteria: </summary>
+                <ul>
+                    <li>At least 12 characters long</li><br>
+                    <li>Contains at least one uppercase letter</li><br>
+                    <li>Contains at least one lowercase letter</li><br>
+                    <li>Contains at least one digit</li><br>
+                    <li>Contains at least one special character</li><br>
+                </ul>
+                (Usernames and Passwords are CaSe SeNsItIvE!)
+            </details>
+            <input id="submit-btn" class="btn btn-orange" type="submit" value="Register">
         </form>
     </div>
 </div>
-<!-- Just in case a mistake was made and return to login is desired -->
-<p>Already have an account? <a href="{{ url_for('login') }}">Return to Login</a></p>
 {% endblock %}
