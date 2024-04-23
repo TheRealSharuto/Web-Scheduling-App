@@ -1,12 +1,18 @@
 /*
 This is the stylesheet for the astronomy website. It controls the layout and appearance of elements
 common to multiple pages.
+
+ONLY EDIT CSS HERE, DO NOT EDIT THE OUTPUT.CSS FILE. 
+
+DO NOT EDIT ANY FILES THAT END IN .JSON.
+
+DO NOT EDIT TAILWIND.CONFIG.JS FILE.
  */
 
 /* Global styles */
 
 /*
-! tailwindcss v3.4.3 | MIT License | https://tailwindcss.com
+! tailwindcss v3.4.1 | MIT License | https://tailwindcss.com
  */
 
 /*
@@ -218,8 +224,6 @@ textarea {
   /* 1 */
   line-height: inherit;
   /* 1 */
-  letter-spacing: inherit;
-  /* 1 */
   color: inherit;
   /* 1 */
   margin: 0;
@@ -243,9 +247,9 @@ select {
 */
 
 button,
-input:where([type='button']),
-input:where([type='reset']),
-input:where([type='submit']) {
+[type='button'],
+[type='reset'],
+[type='submit'] {
   -webkit-appearance: button;
   /* 1 */
   background-color: transparent;
@@ -501,10 +505,6 @@ video {
   --tw-backdrop-opacity:  ;
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
-  --tw-contain-size:  ;
-  --tw-contain-layout:  ;
-  --tw-contain-paint:  ;
-  --tw-contain-style:  ;
 }
 
 ::backdrop {
@@ -555,20 +555,342 @@ video {
   --tw-backdrop-opacity:  ;
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
-  --tw-contain-size:  ;
-  --tw-contain-layout:  ;
-  --tw-contain-paint:  ;
-  --tw-contain-style:  ;
+}
+
+.container {
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
+
+.static {
+  position: static;
+}
+
+.col-span-1 {
+  grid-column: span 1 / span 1;
+}
+
+.col-span-2 {
+  grid-column: span 2 / span 2;
+}
+
+.my-20 {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+.mr-4 {
+  margin-right: 1rem;
+}
+
+.mr-6 {
+  margin-right: 1.5rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.block {
+  display: block;
+}
+
+.flex {
+  display: flex;
+}
+
+.table {
+  display: table;
+}
+
+.grid {
+  display: grid;
+}
+
+.h-3 {
+  height: 0.75rem;
+}
+
+.w-3 {
+  width: 0.75rem;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.flex-shrink-0 {
+  flex-shrink: 0;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.grid-flow-row-dense {
+  grid-auto-flow: row dense;
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-rows-1 {
+  grid-template-rows: repeat(1, minmax(0, 1fr));
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.space-y-6 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}
+
+.rounded {
+  border-radius: 0.25rem;
+}
+
+.rounded-md {
+  border-radius: 0.375rem;
+}
+
+.border {
+  border-width: 1px;
+}
+
+.bg-transparent {
+  background-color: transparent;
+}
+
+.fill-current {
+  fill: currentColor;
+}
+
+.object-contain {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.p-5 {
+  padding: 1.25rem;
+}
+
+.p-6 {
+  padding: 1.5rem;
+}
+
+.px-10 {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.lowercase {
+  text-transform: lowercase;
+}
+
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+/* Variables and pre-styling + color-sets */
+
+.barlow-thin {
+  font-family: "Barlow", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.barlow-extralight {
+  font-family: "Barlow", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.barlow-light {
+  font-family: "Barlow", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.barlow-regular {
+  font-family: "Barlow", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.barlow-medium {
+  font-family: "Barlow", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.barlow-semibold {
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.barlow-bold {
+  font-family: "Barlow", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.barlow-extrabold {
+  font-family: "Barlow", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.barlow-black {
+  font-family: "Barlow", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.barlow-thin-italic {
+  font-family: "Barlow", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.barlow-extralight-italic {
+  font-family: "Barlow", sans-serif;
+  font-weight: 200;
+  font-style: italic;
+}
+
+.barlow-light-italic {
+  font-family: "Barlow", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.barlow-regular-italic {
+  font-family: "Barlow", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.barlow-medium-italic {
+  font-family: "Barlow", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.barlow-semibold-italic {
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.barlow-bold-italic {
+  font-family: "Barlow", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.barlow-extrabold-italic {
+  font-family: "Barlow", sans-serif;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.barlow-black-italic {
+  font-family: "Barlow", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
+*,
+html {
+  font-size: 18px;
+  scroll-behavior:smooth;
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Barlow", sans-serif;
   background-color: #000000;
   margin: 0 50px;
+  margin-bottom: 100px;
   padding: 0;
-  background-image: url('images/6t3m7cg78dha1.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url('/static/images/6t3m7cg78dha1.jpg');
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center center;
   background-color: rgba(0, 0, 0, 1.0);
 }
 
@@ -577,11 +899,16 @@ title {
 }
 
 h1 {
-  color: lightskyblue;
+  color: #fff;
   /* Text color */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   /* Horizontal and vertical shadow offsets, blur
                                                     radius, and shadow color */
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;
+  font-style: normal;
 }
 
 h1.center-heading {
@@ -598,31 +925,17 @@ h3 {
 
 /* Style the list containers for the background to go in */
 
-ul, ol {
+ul,
+ol {
   margin: 0 auto;
-  padding-left: 50px;
   color: white;
+  margin-left: 10px;
 }
 
 /* List items */
 
 li {
   position: relative;
-}
-
-/* Element for the background */
-
-li::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 220px;
-  height: 100%;
-  background-color: rgba(200, 200, 200, 0.2);
-  /* Adjust the background color and transparency */
-  z-index: -1;
-  /* Place it behind the content */
 }
 
 /* Style the links within the list items */
@@ -652,16 +965,9 @@ p {
 /* Styles for the form container */
 
 form {
-  background-color: darkslategray;
   color: white;
   padding: 20px;
   border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  max-width: 400px;
-  margin: 0 auto;
-  /* margin-left: -100px; */
-  margin-top: 60px;
-  z-index: 9999;
 }
 
 label {
@@ -783,3 +1089,281 @@ a:hover {
   text-decoration: underline;
 }
 
+.image-container {
+  bottom: 10px;
+  right: 50px;
+  width: 400px;
+  height: 400px;
+  overflow: hidden;
+}
+
+/* Styles for the rotating images */
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  position: relative;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.image-container img:first-child {
+  opacity: 1;
+}
+
+/* planetarium */
+
+/* Styles for the layout */
+
+.content-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.content-container .text-content {
+  width: 50%;
+}
+
+.content-container .form-container {
+  width: 35%;
+}
+
+/* REGISTRATION PAGE START */
+
+#reg-left-panel {
+  background-image: url('/static/images/reg-background.png');
+  background-color: black;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+#reg-right-panel {
+  margin: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.50));
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+form#reg-form {
+  padding: 40px;
+}
+
+.form-field {
+  margin: auto;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  width: 100%;
+}
+
+.form-field input,
+.form-field label {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin: auto;
+}
+
+.form-field input {
+  background-color: #484747;
+  padding: 20px;
+  border-radius: 10px;
+  width: 200%;
+  max-width: 300px;
+}
+
+.form-field input::-moz-placeholder {
+  color: white;
+  font-size: 20px;
+  font-family: "Barlow", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.form-field input::placeholder {
+  color: white;
+  font-size: 20px;
+  font-family: "Barlow", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+#full-reg-card {
+  max-width: 60%;
+  margin: auto;
+  padding-top: 50px;
+}
+
+.btn {
+  border-radius: 0.25rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  font-family: "Barlow", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.btn-orange {
+  background-color: #C06109;
+}
+
+.btn-orange:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(194 65 12 / var(--tw-bg-opacity));
+}
+
+#submit-btn {
+  border-radius: 0.25rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  font-family: "Barlow", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  background-color: #C06109;
+}
+
+#submit-btn:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(194 65 12 / var(--tw-bg-opacity));
+}
+
+#submit-btn {
+  position: relative;
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.reg-input {
+  text-align: center;
+}
+
+.accessibility-hidden {
+  visibility: hidden;
+}
+
+#reg-logo,
+#reg-callout {
+  display: flex;
+  padding: 30px;
+  justify-content: center;
+}
+
+#signin-button {
+  padding: 30px;
+  display: block;
+  text-align: center;
+}
+
+#signin-btn {
+  margin: auto;
+  margin-top: 20px;
+}
+
+#already-acct {
+  margin: auto;
+}
+
+#lift-off {
+  margin: auto;
+  margin-bottom: 80px;
+  margin-top: 80px;
+}
+
+#reg-logo svg {
+  margin: auto;
+}
+
+details summary{
+  list-style:none;
+}
+
+details summary::-webkit-details-marker{
+  display:none;
+}
+
+details:focus,summary:focus{
+  outline:0;
+}
+
+details summary::after {
+  content: "+";
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  line-height: 17px;
+  font-size: 16px;
+  background: #C06109;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  cursor: pointer;
+  font-family: sans-serif;
+}
+
+details[open] summary::after {
+  content: "-";
+}
+
+.btn-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.btn-white:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(203 213 225 / var(--tw-bg-opacity));
+}
+
+/* REGISTRATION PAGE END */
+
+.hover\:border-white:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity));
+}
+
+.hover\:text-white:hover {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+@media (min-width: 1024px) {
+  .lg\:mt-0 {
+    margin-top: 0px;
+  }
+
+  .lg\:inline-block {
+    display: inline-block;
+  }
+
+  .lg\:flex {
+    display: flex;
+  }
+
+  .lg\:hidden {
+    display: none;
+  }
+
+  .lg\:w-auto {
+    width: auto;
+  }
+
+  .lg\:flex-grow {
+    flex-grow: 1;
+  }
+
+  .lg\:items-center {
+    align-items: center;
+  }
+}

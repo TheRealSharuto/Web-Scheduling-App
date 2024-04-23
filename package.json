@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.py",
   "scripts": {
-    "build-css": "npx tailwindcss -i ./src/css/input.css -o ./src/css/output.css --watch"
+    "build-css": "npx tailwindcss -i ./static/src/css/input.css -o ./static/src/css/output.css --watch"
   },
   "author": "",
   "license": "ISC",

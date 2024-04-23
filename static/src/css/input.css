@@ -1,0 +1,512 @@
+/*
+This is the stylesheet for the astronomy website. It controls the layout and appearance of elements
+common to multiple pages.
+
+ONLY EDIT CSS HERE, DO NOT EDIT THE OUTPUT.CSS FILE. 
+
+DO NOT EDIT ANY FILES THAT END IN .JSON.
+
+DO NOT EDIT TAILWIND.CONFIG.JS FILE.
+ */
+
+/* Global styles */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Variables and pre-styling + color-sets */
+.barlow-thin {
+  font-family: "Barlow", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.barlow-extralight {
+  font-family: "Barlow", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.barlow-light {
+  font-family: "Barlow", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.barlow-regular {
+  font-family: "Barlow", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.barlow-medium {
+  font-family: "Barlow", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.barlow-semibold {
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.barlow-bold {
+  font-family: "Barlow", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.barlow-extrabold {
+  font-family: "Barlow", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.barlow-black {
+  font-family: "Barlow", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.barlow-thin-italic {
+  font-family: "Barlow", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.barlow-extralight-italic {
+  font-family: "Barlow", sans-serif;
+  font-weight: 200;
+  font-style: italic;
+}
+
+.barlow-light-italic {
+  font-family: "Barlow", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.barlow-regular-italic {
+  font-family: "Barlow", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.barlow-medium-italic {
+  font-family: "Barlow", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.barlow-semibold-italic {
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.barlow-bold-italic {
+  font-family: "Barlow", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.barlow-extrabold-italic {
+  font-family: "Barlow", sans-serif;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.barlow-black-italic {
+  font-family: "Barlow", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
+*,
+html {
+  font-size: 18px;
+  scroll-behavior:smooth;
+}
+
+body {
+  font-family: "Barlow", sans-serif;
+  background-color: #000000;
+  margin: 0 50px;
+  margin-bottom: 100px;
+  padding: 0;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url('/static/images/6t3m7cg78dha1.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: rgba(0, 0, 0, 1.0);
+}
+
+title {
+  text-align: center;
+}
+
+h1 {
+  color: #fff;
+  /* Text color */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  /* Horizontal and vertical shadow offsets, blur
+                                                    radius, and shadow color */
+  @apply text-2xl barlow-semibold;
+}
+
+
+h1.center-heading {
+  text-align: center;
+}
+
+h2 {
+  color: khaki;
+}
+
+h3 {
+  color: aquamarine;
+}
+
+/* Style the list containers for the background to go in */
+ul,
+ol {
+  margin: 0 auto;
+  color: white;
+  margin-left: 10px;
+}
+
+/* List items */
+li {
+  position: relative;
+}
+
+/* Style the links within the list items */
+li a {
+  text-decoration: none;
+  color: lightsalmon
+    /* Your link color */
+}
+
+/* Style the text within the list items (optional) */
+li span {
+  color: #333;
+  /* Text color */
+}
+
+
+p {
+  margin-top: 10px;
+  margin-bottom: auto;
+  margin-left: 10px;
+  margin-right: 50px;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Styles for the form container */
+form {
+  color: white;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+textarea {
+  max-width: 300px;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+input[type="submit"] {
+  background-color: #007BFF;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Navigation link styles */
+a {
+  text-decoration: none;
+  color: #007BFF;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Styles for the time strip */
+.time-strip {
+  background-color: dimgrey;
+  height: 50px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Style for the current time */
+.current-time {
+  font-size: 24px;
+  /* Adjust the font size as needed */
+  color: #333;
+  /* Choose a text color that stands out on the background */
+}
+
+/* CSS for the dedicated images on the 3 sub-pages */
+.page-image {
+  position: absolute;
+  top: 30%;
+  right: 50px;
+  transform: translateY(50%);
+  width: 400px;
+  height: 400px;
+  margin: 50px;
+  z-index: 1;
+}
+
+/* Style for flash messages */
+.flash-messages {
+  width: 47.5ch;
+  /* display: none; /* Initially hide the flash messages */
+  /* background-color: #333333; /* Background color for the flash messages */
+  color: white;
+  /* Text color for the flash messages */
+  text-align: center;
+  /* Center-align the text inside the flash messages */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  /* Add some padding to the flash messages */
+  position: fixed;
+  /* Fixed position at the top of the screen */
+  top: 60px;
+  left: calc(50% - 25ch);
+  right: 0;
+  z-index: 9999;
+  /* Ensure flash messages are on top of other content */
+}
+
+
+.flash-message {
+  margin-bottom: 5px;
+}
+
+/* Style for the logout link */
+.logout-link {
+  position: relative;
+  top: 0;
+  bottom: 10px;
+  left: 10px;
+}
+
+.logout-link a {
+  text-decoration: none;
+  color: #007BFF;
+  /* Adjust link color */
+}
+
+.logout-link a:hover {
+  text-decoration: underline;
+}
+
+.image-container {
+  bottom: 10px;
+  right: 50px;
+  width: 400px;
+  height: 400px;
+  overflow: hidden;
+}
+
+/* Styles for the rotating images */
+.image-container img {
+  width: 100%;
+  height: auto;
+  position: relative;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.image-container img:first-child {
+  opacity: 1;
+}
+
+/* planetarium */
+
+/* Styles for the layout */
+.content-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.content-container .text-content {
+  width: 50%;
+}
+
+.content-container .form-container {
+  width: 35%;
+}
+
+/* REGISTRATION PAGE START */
+
+#reg-left-panel {
+  background-image: url('/static/images/reg-background.png');
+  background-color: black;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+#reg-right-panel {
+  margin: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.50));
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+form#reg-form {
+  padding: 40px;
+}
+
+.form-field {
+  margin: auto;
+  @apply py-[0px];
+  width: 100%;
+}
+
+.form-field input,
+.form-field label {
+  @apply my-[10px];
+  margin: auto;
+}
+
+.form-field input {
+  background-color: #484747;
+  padding: 20px;
+  border-radius: 10px;
+  width: 200%;
+  max-width: 300px;
+}
+
+.form-field input::placeholder {
+  color: white;
+  font-size: 20px;
+  @apply barlow-light;
+}
+
+#full-reg-card {
+  max-width: 60%;
+  margin: auto;
+  padding-top: 50px;
+}
+
+.btn {
+  @apply text-white barlow-medium rounded py-2 px-10;
+}
+
+.btn-orange {
+  background-color: #C06109;
+  @apply hover:bg-orange-700;
+}
+
+#submit-btn {
+  @apply btn btn-orange;
+  position: relative;
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.reg-input {
+  text-align: center;
+}
+
+.accessibility-hidden {
+  visibility: hidden;
+}
+
+#reg-logo,
+#reg-callout {
+  display: flex;
+  padding: 30px;
+  justify-content: center;
+}
+
+#signin-button {
+  padding: 30px;
+  display: block;
+  text-align: center;
+}
+
+#signin-btn {
+  margin: auto;
+  margin-top: 20px;
+}
+
+#already-acct {
+  margin: auto;
+}
+
+#lift-off {
+  margin: auto;
+  margin-bottom: 80px;
+  margin-top: 80px;
+}
+
+#reg-logo svg {
+  margin: auto;
+}
+details summary{
+  list-style:none;
+ }
+ details summary::-webkit-details-marker{
+  display:none;
+ }
+
+details:focus,summary:focus{
+  outline:0;
+ }
+
+details summary::after {
+  content: "+";
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  line-height: 17px;
+  font-size: 16px;
+  background: #C06109;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  cursor: pointer;
+  font-family: sans-serif;
+}
+
+details[open] summary::after {
+  content: "-";
+}
+
+.btn-white {
+  @apply bg-white text-black hover:bg-slate-300;
+}
+
+/* REGISTRATION PAGE END */
