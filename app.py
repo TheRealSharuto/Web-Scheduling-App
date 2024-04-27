@@ -1,13 +1,18 @@
 
 """
-John Leckie, SDEV 300, 3 Oct '23
+Charlie Team, CMSC 495 Section 7381, Spring 2024
+John Leckie, Shara Belton, Sirish Tadepalli, and Thomas Memmo
+Mark Munoz, Professor
 
 Astronomy Web App
 
-This is a Flask web application for a simple astronomy website. It includes routes to
-different pages and displays the current date and time on the homepage.
-For Lab 8, there are added functionalities- logging invalid login attempts, and allowing an
-existing user to change their password.
+This is a Flask web application for a simple astronomy website. Frontend elements were mockup
+forms with no backend functionality.
+
+For our team's project, a database was added. The users (Astronomy professors working for the
+school) can now schedule a time slot for either telescope usage or instructing students using
+the planetarium. These actions will test interoperability between the frontend and backend 
+elements of the application.
 """
 
 import hashlib  # Required for password hashing
