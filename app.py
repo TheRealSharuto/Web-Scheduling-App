@@ -251,7 +251,7 @@ def update_password():
                     "error")
             return redirect(url_for("update_password"))
 
-        # Check if the new password is in CommonPasswords.txt. We're going to need this txt file.
+        # Check if the new password is in CommonPasswords.txt.
         with open("static/CommonPasswords.txt", "r",
                     encoding="utf-8") as common_passwords_file:
             print("Debug: Comparing COMMON PASSWORD LIST")
