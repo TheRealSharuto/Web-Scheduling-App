@@ -1,7 +1,7 @@
 {
-  "name": "web-scheduling-app",
+  "name": "npx",
   "version": "1.0.0",
-  "description": "",
+  "description": "For my teammates. You must do the following to run this web application:",
   "main": "app.py",
   "scripts": {
     "build-css": "npx tailwindcss -i ./static/src/css/input.css -o ./static/src/css/output.css --watch"
