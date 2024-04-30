@@ -271,7 +271,7 @@ def update_password():
         flash("Password updated successfully", "success")
         return redirect(url_for("home"))
 
-    return render_template("update_password.html")
+    return render_template('update_password.html')
 
 
 @app.route('/')
