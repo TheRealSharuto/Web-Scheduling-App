@@ -126,6 +126,7 @@ def login():
 
         cursor.execute("SELECT password FROM Users WHERE username =  %s", (username,))
         row = cursor.fetchone()
+        
         db_password = row[0]
         
         #if that password, and therefore account, exists
