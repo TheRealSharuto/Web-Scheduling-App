@@ -367,6 +367,13 @@ a:hover {
 /* HOME PAGE START */
 
 /* DIVS FOR HOME PAGE, ASK SHARA WHERE DIV INFO IS FOR TOP NAV BAR */
+.copy-container {
+  width: 100%;
+  height: auto;
+  position: below;
+  font-size: 18px;
+  scroll-behavior:smooth;
+}
 
 /* HOME PAGE END */
 
