@@ -1104,11 +1104,12 @@ a:hover {
   top: 0;
   bottom: 10px;
   left: 10px;
+  color: aquamarine;
 }
 
 .logout-link a {
   text-decoration: none;
-  color: #007BFF;
+  color: aquamarine;
   /* Adjust link color */
 }
 
@@ -1154,6 +1155,20 @@ a:hover {
 .content-container .form-container {
   width: 35%;
 }
+
+/* HOME PAGE START */
+
+/* DIVS FOR HOME PAGE, ASK SHARA WHERE DIV INFO IS FOR TOP NAV BAR */
+
+.copy-container {
+  width: 100%;
+  height: auto;
+  position: below;
+  font-size: 18px;
+  scroll-behavior:smooth;
+}
+
+/* HOME PAGE END */
 
 /* REGISTRATION PAGE START */
 
