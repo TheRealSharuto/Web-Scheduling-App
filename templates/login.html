@@ -94,6 +94,9 @@
                         <input placeholder="Password" type="password" name="password" id="password" required>
                     </div>
                 </div>
+                <div class="logout-link">
+                    <p class="text-white">Password reset is available  <a href="{{ url_for('update_password') }}">Here.</a></p>
+                </div>
             </div>
             <input id="submit-btn" class="btn btn-orange" type="submit" value="Login">
         </form>
