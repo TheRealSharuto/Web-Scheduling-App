@@ -315,12 +315,10 @@ a:hover {
   top: 0;
   bottom: 10px;
   left: 10px;
-  color: aquamarine;
 }
 
 .logout-link a {
   text-decoration: none;
-  color: aquamarine;
   /* Adjust link color */
 }
 
