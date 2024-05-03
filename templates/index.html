@@ -54,4 +54,19 @@
 
 </div>
 
+<div class="time-strip">
+    <!-- Display current date and time with seconds truncated -->
+    <p>Current Date and Time: {{ current_time.strftime('%Y-%m-%d %H:%M') }}</p>
+</div>
+<br><br>
+
+<br>
+<div class="logout-link">
+    <a href="{{ url_for('logout') }}">Logout</a>
+</div>
+<div class="logout-link">
+    <p>Password reset is available  <a href="{{ url_for('update_password') }}">Here.</a></p>
+</div>
+<!-- <script src="scripts.js"></script> -->
+
 {% endblock %}
