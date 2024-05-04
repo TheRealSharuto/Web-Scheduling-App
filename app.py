@@ -16,10 +16,11 @@ elements of the application.
 """
 
 import hashlib  # Required for password hashing
-from datetime import datetime
+from datetime import datetime,timedelta
 import logging
 import mysql.connector
-from flask import Flask, render_template, request, redirect, url_for, flash, session
+import os
+from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
 
 app = Flask(__name__)
 app.secret_key = '86753093212135889'
@@ -55,6 +56,11 @@ SECURITY_DATA_FILE = 'security_log.txt'
 
 # Logger for failed login attempts
 failed_login_logger = logging.getLogger
+
+path_cwd = os.path.dirname(os.path.realpath(__file__))
+path_templates = os.path.join(path_cwd,"templates")
+path_static = os.path.join(path_cwd, "static")
+
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -157,6 +163,11 @@ def login():
 
     return render_template('login.html', reg_message=reg_message)
 
+def get_available_time_slots(week_date):
+    cursor.execute("SELECT time FROM Telescope WHERE date = %s AND UserID IS NULL", (week_date,))
+    available_time_slots = [slot[0] for slot in cursor.fetchall()]
+    return available_time_slots
+
 @app.route('/telescope_time', methods=['POST', 'GET'])
 def telescope_time():
     """
@@ -170,27 +181,48 @@ def telescope_time():
         return redirect(url_for('login'))
 
     if request.method == 'POST':
-        date = request.form['date']
-        time = request.form['time']
+        dataGet = request.json
+        selected_date = dataGet.get('date')
+        #Do what is needed with the data
 
-        username = session['username']
+        print(selected_date)
 
-        #first get the userID associated with that name from the Users table
-        cursor.execute("SELECT userID FROM Users WHERE username = %s", (username,))
-        row = cursor.fetchone()
-        userID = row[0]
+        # Convert the date string to a datetime object
+        date = datetime.strptime(selected_date, '%Y-%m-%d')
 
+    # Find the Monday of the week
+        monday = date - timedelta(days=date.weekday())
 
-        #fill that userID into the row with that date and time which are formatted into strings
-        cursor.execute("UPDATE Telescope SET userID = %s WHERE date = %s AND time = %s", (userID, str(date), str(time)))
+        week_dates = []
 
-        db.commit()
-        flash('Reservation successful!', 'success')
+        # Iterate from Monday to Sunday and add each date to the list
+        for i in range(7):
+            week_dates.append((monday + timedelta(days=i)).strftime('%Y-%m-%d'))
 
-    
+        print(week_dates)
+
+        dates_and_times_dict = {}
+
+        for date in week_dates:
+            time_slots = get_available_time_slots(date)
+            dates_and_times_dict.update({date: time_slots})
+            print(dates_and_times_dict)
+        
+        # convert timedelta objects to strings
+        for key, value in dates_and_times_dict.items():
+            dates_and_times_dict[key] = [str(slot) for slot in value]
+        
+        print(dates_and_times_dict)
+
+        return jsonify(dates_and_times_dict)
+
+        # return data after getting it 
+
+        #dataReply = {'date':'time'}
+
+        #youtube video following
 
     return render_template('telescope_time.html')
-
 
 @app.route('/update_password', methods=['GET', 'POST'])
 def update_password():

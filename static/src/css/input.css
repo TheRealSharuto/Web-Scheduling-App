@@ -162,12 +162,9 @@ h1.center-heading {
   text-align: center;
 }
 
-h2 {
-  color: khaki;
-}
-
-h3 {
-  color: aquamarine;
+h2, ,
+#telescope-form h4, h4, h5, h6 {
+  @apply text-white;
 }
 
 /* Style the list containers for the background to go in */
@@ -203,7 +200,6 @@ p {
   margin-left: 10px;
   margin-right: 50px;
   color: #fff;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* Styles for the form container */
@@ -521,4 +517,28 @@ details[open] summary::after {
   @apply bg-white text-black hover:bg-slate-300;
 }
 
-/* REGISTRATION PAGE END */
+/* TELESCOPE FORM */
+#telescope-form {
+  @apply bg-white rounded max-w-md overflow-hidden shadow-lg;
+  margin: 0 auto;
+}
+
+#telescope-form p,
+#telescope-form h2,
+#telescope-form h3,
+#telescope-form h4,
+#telescope-form input,
+#telescope-form input::placeholder {
+  @apply text-black;
+}
+
+#dates-and-times
+
+.time-radio-button, time-radio-button {
+  @apply text-black;
+}
+
+.radio-label-text {
+  @apply text-black;
+  font-weight: 400;
+}
