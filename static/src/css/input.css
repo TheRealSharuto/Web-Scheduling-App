@@ -532,8 +532,6 @@ details[open] summary::after {
   @apply text-black;
 }
 
-#dates-and-times
-
 .time-radio-button, time-radio-button {
   @apply text-black;
 }
@@ -541,4 +539,8 @@ details[open] summary::after {
 .radio-label-text {
   @apply text-black;
   font-weight: 400;
+}
+
+.time-slot-date {
+  font-weight: 700;
 }

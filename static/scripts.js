@@ -42,7 +42,7 @@ function showTimeSlots(dataReply) {
     for (const [key, value] of Object.entries(dataReply)) {
         if (value.length > 0) {
             dateAndTimesDiv.innerHTML += (
-                "<h4>" + key + "</h4>" + "<br>");
+                "<br><h4 class=\"time-slot-date\">" + key + "</h4>" + "<br>");
             for (let i = 0; i < value.length; i++) {
                 value[i] = convertTo12Hour(value[i]);
                 dateAndTimesDiv.innerHTML += (
@@ -69,14 +69,7 @@ function convertTo12Hour(timeStr) {
         hour12: true
     });
 
-    // Extract the hour and minutes from the 12-hour format string
-    const [hour12, minute12] = time12Hour.split(':');
+    console.log("time 12 hour:" + time12Hour);
 
-    // Determine whether it's AM or PM based on the hour
-    const period = parseInt(hour12) < 12 ? 'AM' : 'PM';
-
-    // Construct the final time string with AM/PM
-    const finalTime = `${hour12}:${minute12} ${period}`;
-
-    return finalTime;
+    return time12Hour;
 }

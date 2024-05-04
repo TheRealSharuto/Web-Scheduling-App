@@ -181,48 +181,75 @@ def telescope_time():
         return redirect(url_for('login'))
 
     if request.method == 'POST':
-        dataGet = request.json
-        selected_date = dataGet.get('date')
-        #Do what is needed with the data
+        if request.is_json:
+            dataGet = request.json
+            selected_date = dataGet.get('date')
+            #Do what is needed with the data
 
-        print(selected_date)
+            print(selected_date)
 
-        # Convert the date string to a datetime object
-        date = datetime.strptime(selected_date, '%Y-%m-%d')
+            # Convert the date string to a datetime object
+            date = datetime.strptime(selected_date, '%Y-%m-%d')
 
-    # Find the Monday of the week
-        monday = date - timedelta(days=date.weekday())
+            # Find the Monday of the week
+            monday = date - timedelta(days=date.weekday())
 
-        week_dates = []
+            week_dates = []
 
-        # Iterate from Monday to Sunday and add each date to the list
-        for i in range(7):
-            week_dates.append((monday + timedelta(days=i)).strftime('%Y-%m-%d'))
+            # Iterate from Monday to Sunday and add each date to the list
+            for i in range(7):
+                week_dates.append((monday + timedelta(days=i)).strftime('%Y-%m-%d'))
 
-        print(week_dates)
+            print(week_dates)
 
-        dates_and_times_dict = {}
+            dates_and_times_dict = {}
 
-        for date in week_dates:
-            time_slots = get_available_time_slots(date)
-            dates_and_times_dict.update({date: time_slots})
+            for date in week_dates:
+                time_slots = get_available_time_slots(date)
+                dates_and_times_dict.update({date: time_slots})
+                print(dates_and_times_dict)
+        
+            # convert timedelta objects to strings
+            for key, value in dates_and_times_dict.items():
+                dates_and_times_dict[key] = [str(slot) for slot in value]
+        
             print(dates_and_times_dict)
-        
-        # convert timedelta objects to strings
-        for key, value in dates_and_times_dict.items():
-            dates_and_times_dict[key] = [str(slot) for slot in value]
-        
-        print(dates_and_times_dict)
 
-        return jsonify(dates_and_times_dict)
+            return jsonify(dates_and_times_dict)
 
-        # return data after getting it 
+            # return data after getting it 
 
-        #dataReply = {'date':'time'}
+        # FOR FORM SUBMISSION
+        else:
+            date = request.form['date']
+            time = request.form['time']
+            time = convert_to_24_hour(time)
+            print(time)
 
-        #youtube video following
+            username = session['username']
 
+            #first get the userID associated with that name from the Users table
+            cursor.execute("SELECT userID FROM Users WHERE username = %s", (username,))
+            row = cursor.fetchone()
+            userID = row[0]
+
+
+            #fill that userID into the row with that date and time which are formatted into strings
+            cursor.execute("UPDATE Telescope SET userID = %s WHERE date = %s AND time = %s", (userID, str(date), str(time)))
+
+            db.commit()
+            flash('Reservation successful!', 'success')
+    
     return render_template('telescope_time.html')
+
+def convert_to_24_hour(time_str):
+    # Parse the time string using strptime
+    time_obj = datetime.strptime(time_str, '%I:%M %p')  # %I for 12-hour format, %p for AM/PM indicator
+    
+    # Convert the time object to 24-hour format using strftime
+    time_24_hour = time_obj.strftime('%H:%M')  # %H for 24-hour format, %M for minutes
+    
+    return time_24_hour
 
 @app.route('/update_password', methods=['GET', 'POST'])
 def update_password():
