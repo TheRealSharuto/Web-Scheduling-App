@@ -372,10 +372,10 @@ def planetarium():
         userID = row[0]
 
         #fill that userID into the row with that date and time which are formatted into strings
-        cursor.execute("UPDATE Planetarium SET userID = %s WHERE date = %s AND time = %s", (userID, str(date), str(time)))
+        cursor.execute("INSERT INTO Planetarium (userID, date, time) VALUES (%s, %s, %s)", (userID, date, time))
 
         db.commit()
-        flash('Reservation successful!', 'success')
+        flash('Thank you!  We will confirm shortly..', 'success')
 
     page_name = 'Planetarium'
 

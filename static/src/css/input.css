@@ -220,6 +220,7 @@ label {
 input[type="text"],
 input[type="email"],
 input[type="date"],
+select,
 textarea {
   max-width: 300px;
   width: 100%;
@@ -352,7 +353,7 @@ a:hover {
   flex-wrap: wrap;
   margin: auto;
   padding: 50px 100px;
-  max-width: 1200px;
+  max-width: 1800px;
 }
 
 .content-container .text-content {
@@ -360,7 +361,7 @@ a:hover {
 }
 
 .content-container .form-container {
-  width: 35%;
+  width: 40%;
 }
 
 /* HOME PAGE START */
@@ -456,6 +457,22 @@ form#reg-form, #planetarium-form, #home-split-grid {
 
 .form-field input {
   background-color: #484747;
+  padding: 20px;
+  border-radius: 10px;
+  width: 200%;
+  max-width: 300px;
+}
+
+.form-field select,
+.form-field label {
+  @apply my-[10px];
+  margin: auto;
+}
+
+.form-field select {
+  background-color: #484747;
+  color: white;
+  font-size: 20px;
   padding: 20px;
   border-radius: 10px;
   width: 200%;
