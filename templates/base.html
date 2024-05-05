@@ -104,13 +104,18 @@
                     </a>
                 </div>
                 <div>
-                        {% if session.logged_in %}
+                    {% if session.logged_in %}
+                        <a class="text-black m-0" href="{{ url_for('update_password') }}">
+                            <button class="bg-white hover:bg-zinc-200 text-black py-2 px-4 rounded-full">Change Password</button>
+                        </a>
                         <a class="text-black m-0" href="{{ url_for('logout') }}">
-                            <button class="bg-white hover:bg-zinc-200 text-black py-2 px-4 rounded-full">Logout</button></a>
-                        {% else %}
+                            <button class="bg-white hover:bg-zinc-200 text-black py-2 px-4 rounded-full">Logout</button>
+                        </a>
+                    {% else %}
                         <a class="text-black m-0" href="{{ url_for('login') }}">
-                            <button class="bg-white hover:bg-zinc-200 text-black py-2 px-4 rounded-full">Login</button></a>
-                        {% endif %}
+                            <button class="bg-white hover:bg-zinc-200 text-black py-2 px-4 rounded-full">Login</button>
+                        </a>
+                    {% endif %}
                 </div>
             </div>
         </nav>
