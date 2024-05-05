@@ -181,8 +181,8 @@ def telescope_time():
         return redirect(url_for('login'))
 
     if request.method == 'POST':
-        if request.is_json:
-            dataGet = request.json
+        dataGet = request.json
+        if dataGet.get('type') == 'calendar':
             selected_date = dataGet.get('date')
             #Do what is needed with the data
 
@@ -218,11 +218,10 @@ def telescope_time():
             return jsonify(dates_and_times_dict)
 
             # return data after getting it 
-
         # FOR FORM SUBMISSION
         else:
-            date = request.form['date']
-            time = request.form['time']
+            date = dataGet['date']
+            time = dataGet['time']
             time = convert_to_24_hour(time)
             print(time)
 
@@ -238,7 +237,9 @@ def telescope_time():
             cursor.execute("UPDATE Telescope SET userID = %s WHERE date = %s AND time = %s", (userID, str(date), str(time)))
 
             db.commit()
+            print('Successfully reserved');
             flash('Reservation successful!', 'success')
+            return jsonify({'message': 'Reservation successful'})
     
     return render_template('telescope_time.html')
 

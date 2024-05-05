@@ -21,7 +21,7 @@
 <p class="text-center">Complete the form below to reserve telescope time.</p>
 
 <div id="telescope-form">
-    <form method="post"> <!--be sure to add this part if the user is submitting some data with the form-->
+    <form id="schedule-form" method="post"> <!--be sure to add this part if the user is submitting some data with the form-->
         <h2>Available Slots for West Telescope</h2>
         <h3 class="text-bold">Week of: </h3>
         <div>
@@ -29,15 +29,17 @@
             <p class="text-sm">Select date to show time slots for that week</p>
             <div class="flex-row">
                 <input type="date" id="date" name="date" value="{{ selected_date }}" required>
-                <button id="show-schedule" class="btn-orange rounded py-2 px-2" type="button" name="Show" value="Show Schedule">Show Schedule</button>
+                <button id="show-schedule" class="btn-orange rounded py-2 px-2" type="button" name="Show"
+                    value="Show Schedule">Show Schedule</button>
             </div>
         </div>
-        <br><br>
+    </form>
+    <br><br>
+    <form id="submit-form" method="post">
         <div id="dates-and-times">
             <!-- Dates And Times populated by javascript -->
-            
-        </div>
 
+        </div>
         <input type="submit" value="Submit">
     </form>
 </div>
