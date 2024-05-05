@@ -19,7 +19,6 @@ import hashlib  # Required for password hashing
 from datetime import datetime,timedelta
 import logging
 import mysql.connector
-import os
 from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
 
 app = Flask(__name__)
@@ -56,10 +55,6 @@ SECURITY_DATA_FILE = 'security_log.txt'
 
 # Logger for failed login attempts
 failed_login_logger = logging.getLogger
-
-path_cwd = os.path.dirname(os.path.realpath(__file__))
-path_templates = os.path.join(path_cwd,"templates")
-path_static = os.path.join(path_cwd, "static")
 
 
 
@@ -238,7 +233,6 @@ def telescope_time():
 
             db.commit()
             print('Successfully reserved');
-            flash('Reservation successful!', 'success')
             return jsonify({'message': 'Reservation successful'})
     
     return render_template('telescope_time.html')

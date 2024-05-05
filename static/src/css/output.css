@@ -1075,7 +1075,7 @@ a:hover {
   width: 47.5ch;
   /* display: none; /* Initially hide the flash messages */
   /* background-color: #333333; /* Background color for the flash messages */
-  color: white;
+  color: #C06109;
   /* Text color for the flash messages */
   text-align: center;
   /* Center-align the text inside the flash messages */
@@ -1083,12 +1083,15 @@ a:hover {
   /* Add some padding to the flash messages */
   position: fixed;
   /* Fixed position at the top of the screen */
-  top: 60px;
+  top: 100px;
   left: calc(50% - 25ch);
   right: 0;
-  border-radius: 50px;
   z-index: 9999;
   /* Ensure flash messages are on top of other content */
+}
+
+.flash-messages p {
+  margin: auto 0;
 }
 
 .flash-message {
