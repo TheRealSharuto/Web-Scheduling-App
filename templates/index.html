@@ -18,47 +18,57 @@
 {% endif %}
 {% endwith %}
 
-<div id="copy-container" class="homeBody">
-    
-    <h1 class="center-heading">Welcome to the Metro U Astronomy Portal</h1>
+<div id="full-reg-home-card" class="grid grid-flow-row-dense grid-cols-4 grid-rows-1 rounded-md">
+    <div id="reg-left-panel-home" class="col-span-2">
+        <div id="home-split-grid" class="space-y-6 bg-transparent my-20" method="post">
+            <div class="flex flex-col">
+                <div class="text-center">
+                    <h1 class="text-5xl">Metro U Astronomy Portal</h1>
+                    <br>
+                    <p>Welcome to the Metro University Observatory and Planetarium interface. Here, post grads and
+                        professors may sign up for a variety of activities. See below for links to each department.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-span-2" id="home-pic-frame">
+        <img src="../static/images/image2.jpg" alt="">
+    </div>
+</div>
 
-    <br><br>
-    <p>Welcome to the Metro University Observatory and Planetarium interface. Here, post grads
-        and professors may sign up for activities. See nav bar above to see links to each department.</p>
-        <br>
-    <h2>Our Services</h2>
-    <p>If you have a research plan and you're working on your thesis, you may sign up for time on our
-        large-aperture telescope! <br>
-        Just use the "Reserve a Telescope" link above.</p>
-    <p>Also, you can help budding young astronomers find their calling, or recruit STEM
-        students to the field! Take the controls of the largest Planetarium in the Generic
-        Region! <br> 
-        Use the "Planetarium" link above to reserve a time slot.
-        
-    <br> </p><br>
 
-    <h3>Our Friends</h3>
+<section class="content-container">
+    <br>
+    <div class="text-content">
+        <h2 class="section-headings text-4xl text-center">Our Services</h2>
+        <p>If you have a research plan and you're working on your thesis, you may sign up for time on our large-aperture
+            telescope!Just use the "Reserve a Telescope" link above.</p>
+        <p>Also, you can help budding young astronomers find their calling, or recruit STEM
+            students to the field! Take the controls of the largest Planetarium in the Generic
+            Region!</p>
+        <p>Use the "Planetarium" link above to reserve a time slot.</p>
+    </div>
+</section>
+<section class="content-container">
+    <h2 class="section-headings text-4xl text-center">Our Friends</h2>
     <p>Some great places online we'd love to share with you--</p>
-    <ol>
-        <li><a href="https://www.jwst.nasa.gov/">The James Webb Telescope</a></li>
-        <li><a href="https://www.astronomycast.com/">The Astronomy Cast Podcast</a></li>
-        <li><a href="https://apod.nasa.gov/apod/astropix.html">Astronomy Pic of the Day</a></li>
-    </ol>
-
+    <section class="interesting-links-buttons">
+        <a class="btn-orange text-white py-2 px-4 rounded-full" href="https://www.jwst.nasa.gov/">The James Webb
+            Telescope</a>
+        <a class="btn-orange text-white py-2 px-4 rounded-full" href="https://www.astronomycast.com/">The Astronomy Cast
+            Podcast</a>
+        <a class="btn-orange text-white py-2 px-4 rounded-full"
+            href="https://apod.nasa.gov/apod/astropix.html">Astronomy Pic of the Day</a>
+    </section>
+</section>
+<section>
     <div class="image-container">
-        <img src="/static/images/image1.jpg" alt="Image 1">
-        <img src="/static/images/image2.jpg" alt="Image 2">
-        <img src="/static/images/image3.jpg" alt="Image 3">
-        <img src="/static/images/image4.jpg" alt="Image 4">
-        <img src="/static/images/image5.jpg" alt="Image 5">
-
-</div>
-</div>
-<!-- <script src="scripts.js"></script> -->
-
-<div class="time-strip">
-    <!-- Display current date and time with seconds truncated -->
-    <p>Current Date and Time: {{ current_time.strftime('%Y-%m-%d %H:%M') }}</p>
-</div>
+        <img class="h-auto max-w-xl rounded-lg shadow-xl dark:shadow-gray-800" src="/static/images/image1.jpg" alt="Image 1">
+        <img class="h-auto max-w-xl rounded-lg shadow-xl dark:shadow-gray-800" src="/static/images/image2.jpg" alt="Image 2">
+        <img class="h-auto max-w-xl rounded-lg shadow-xl dark:shadow-gray-800" src="/static/images/image3.jpg" alt="Image 3">
+        <img class="h-auto max-w-xl rounded-lg shadow-xl dark:shadow-gray-800" src="/static/images/image4.jpg" alt="Image 4">
+        <img class="h-auto max-w-xl rounded-lg shadow-xl dark:shadow-gray-800" src="/static/images/image5.jpg" alt="Image 5">
+    </div>
+</section>
 
 {% endblock %}
