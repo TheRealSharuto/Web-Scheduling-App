@@ -5,7 +5,6 @@
 {% endblock %}
 
 {% block body %}
-<h1 class="center-heading">Reserve a Telescope</h1>
 
 <!-- Jinja2 sorcery to display flash messages -->
 {% with messages = get_flashed_messages() %}
@@ -18,8 +17,9 @@
 {% endif %}
 {% endwith %}
 
+<h1 class="center-heading mt-5">Reserve a Telescope</h1>
 <p class="text-center">Complete the form below to reserve telescope time.</p><br>
-<div class="text-content">
+<div class="content-container">
 
     <br>
     <p>Telescope time is given out by day, so you will have all day with our 5-meter reflector.
