@@ -150,10 +150,6 @@ title {
 
 h1 {
   color: #fff;
-  /* Text color */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  /* Horizontal and vertical shadow offsets, blur
-                                                    radius, and shadow color */
   @apply text-2xl barlow-semibold;
 }
 
@@ -162,9 +158,17 @@ h1.center-heading {
   text-align: center;
 }
 
-h2, ,
-#telescope-form h4, h4, h5, h6 {
+#telescope-form h2, h4, h4, h5, h6 {
   @apply text-white;
+}
+
+h2.section-headings {
+  color: white;
+  padding-bottom: 30px;
+}
+
+section p {
+  font-size: 18px;
 }
 
 /* Style the list containers for the background to go in */
@@ -326,25 +330,18 @@ a:hover {
 }
 
 .image-container {
-  bottom: 10px;
-  right: 50px;
-  width: 400px;
-  height: 400px;
-  overflow: hidden;
+ margin: auto;
+ display: flex;
+ flex-direction: row;
+ flex-wrap: wrap;
+ justify-content: center;
 }
 
-/* Styles for the rotating images */
 .image-container img {
-  width: 100%;
-  height: auto;
-  position: right;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
+  margin: 10px;
+  
 }
 
-.image-container img:first-child {
-  opacity: 1;
-}
 
 /* planetarium */
 
@@ -409,7 +406,18 @@ a:hover {
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
 }
+#home-pic-frame{
+  height: 100%;
+  border-radius: 20px;
+  margin-left: 10px;
+}
 
+#home-pic-frame img{
+  display: block;
+  object-fit: cover;
+  height: 100%;
+  border-radius: 20px;
+}
 #reg-right-panel {
   margin: 0;
   background: linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.50));
@@ -424,7 +432,13 @@ a:hover {
   border-bottom-left-radius: 20px;
 }
 
-form#reg-form, #planetarium-form {
+#reg-left-panel-home {
+  margin-right: 20px;
+  background-color:#C06109;
+  border-radius: 20px;
+}
+
+form#reg-form, #planetarium-form, #home-split-grid {
   padding: 40px;
 }
 
@@ -454,7 +468,7 @@ form#reg-form, #planetarium-form {
   @apply barlow-light;
 }
 
-#full-reg-card, #full-reg-card-planetarium {
+#full-reg-card, #full-reg-card-planetarium, #full-reg-home-card {
   max-width: 60%;
   margin: auto;
   padding-top: 50px;
@@ -580,7 +594,23 @@ details[open] summary::after {
 
 /* Planetarium */
 
-#Planetarium {
+#Planetarium, #Home {
   background-color: #1C2128;
   background-image: none;
+}
+
+.interesting-links-buttons {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  padding-top: 20px;
+}
+
+.interesting-links-buttons a {
+  margin: 10px;
+}
+
+#menu-items {
+  display:flex;
+  margin: auto;
 }

@@ -96,31 +96,44 @@
                     <a href="/" class="block mt-4 px-10 lg:inline-block lg:mt-0 text-white mr-4">
                         Home
                     </a>
-                    <a href="{{ url_for('planetarium') }}" class="block mt-4 px-10 lg:inline-block lg:mt-0 text-white mr-4">
+                    <a href="{{ url_for('planetarium') }}"
+                        class="block mt-4 px-10 lg:inline-block lg:mt-0 text-white mr-4">
                         Planetarium
                     </a>
-                    <a href="{{ url_for('telescope_time') }}" class="block mt-4 px-10 lg:inline-block lg:mt-0 text-white">
+                    <a href="{{ url_for('telescope_time') }}"
+                        class="block mt-4 px-10 lg:inline-block lg:mt-0 text-white">
                         Reserve a Telescope
                     </a>
                 </div>
                 <div>
                     {% if session.logged_in %}
-                        <a class="text-black m-0" href="{{ url_for('update_password') }}">
-                            <button class="bg-white hover:bg-zinc-200 text-black py-2 px-4 rounded-full">Change Password</button>
-                        </a>
-                        <a class="text-black m-0" href="{{ url_for('logout') }}">
-                            <button class="bg-white hover:bg-zinc-200 text-black py-2 px-4 rounded-full">Logout</button>
-                        </a>
+                    <a class="text-black m-0" href="{{ url_for('update_password') }}">
+                        <button class="bg-white hover:bg-zinc-200 text-black py-2 px-4 rounded-full">Change
+                            Password</button>
+                    </a>
+                    <a class="text-black m-0" href="{{ url_for('logout') }}">
+                        <button class="bg-white hover:bg-zinc-200 text-black py-2 px-4 rounded-full">Logout</button>
+                    </a>
                     {% else %}
-                        <a class="text-black m-0" href="{{ url_for('login') }}">
-                            <button class="bg-white hover:bg-zinc-200 text-black py-2 px-4 rounded-full">Login</button>
-                        </a>
+                    <a class="text-black m-0" href="{{ url_for('login') }}">
+                        <button class="bg-white hover:bg-zinc-200 text-black py-2 px-4 rounded-full">Login</button>
+                    </a>
                     {% endif %}
                 </div>
             </div>
         </nav>
     </header>
     {% block body %}{% endblock %}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+
+<footer>
+    <div class="time-strip">
+        <!-- Display current date and time with seconds truncated -->
+        <p>Current Date and Time: {{ current_time.strftime('%Y-%m-%d %H:%M') }}</p>
+    </div>
+</footer>
 </body>
+
 
 </html>
