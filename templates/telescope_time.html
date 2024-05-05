@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %}
-<h1 class="center-heading">Reserve A Telescope</h1>
+<h1 class="center-heading">Reserve a Telescope</h1>
 
 <!-- Jinja2 sorcery to display flash messages -->
 {% with messages = get_flashed_messages() %}
@@ -18,15 +18,28 @@
 {% endif %}
 {% endwith %}
 
-<p class="text-center">Complete the form below to reserve telescope time.</p>
+<p class="text-center">Complete the form below to reserve telescope time.</p><br>
+<div class="text-content">
 
+    <br>
+    <p>Telescope time is given out by day, so you will have all day with our 5-meter reflector.
+        You will also have access to our spectroscopy equipment and solar observation filter. We do 
+        ask that you give us at least 48 hours notice for solar observation. This will give our techs 
+        time to do the filter installation and conversion.<br><br>
+        Please contact Marcus Brody to complete pre and post telescope usage reports.
+    </p>
+</div>
 <div id="telescope-form">
     <form id="schedule-form" method="post"> <!--be sure to add this part if the user is submitting some data with the form-->
-        <h2>Available Slots for West Telescope</h2>
-        <h3 class="text-bold">Week of: </h3>
+        <h2>Available Slots for the 5-meter Telescope</h2><br>
+        <!-- <h3 class="text-bold">Week of: </h3> I commented this out-- "Week of" and "Select Preferred Date" 
+            feel like they conflict -->
         <div>
             <label class="text-black" for="date">Select Preferred Date: </label>
-            <p class="text-sm">Select date to show time slots for that week</p>
+            <p class="text-sm">Select "show schedule" to show time slots for each week, and choose 
+                your slot by selecting the radio button and clicking "Submit." You will get a confirmation 
+                popup on successful reservation.<br> <!-- If this is too wordy, trim as desired. -->
+            </p>
             <div class="flex-row">
                 <input type="date" id="date" name="date" value="{{ selected_date }}" required>
                 <button id="show-schedule" class="btn-orange rounded py-2 px-2" type="button" name="Show"
@@ -40,6 +53,7 @@
             <!-- Dates And Times populated by javascript -->
 
         </div>
+        <br>
         <input type="submit" value="Submit">
     </form>
 </div>
