@@ -664,6 +664,10 @@ video {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.grid-cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .grid-rows-1 {
   grid-template-rows: repeat(1, minmax(0, 1fr));
 }
@@ -761,6 +765,11 @@ video {
   padding-bottom: 0.5rem;
 }
 
+.py-5 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -768,6 +777,11 @@ video {
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
+}
+
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
 }
 
 .text-sm {
@@ -1144,11 +1158,15 @@ a:hover {
 
 .content-container {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: auto;
+  padding: 50px 100px;
+  max-width: 1200px;
 }
 
 .content-container .text-content {
-  width: 50%;
+  width: 100%;
 }
 
 .content-container .form-container {
@@ -1181,6 +1199,26 @@ a:hover {
   border-bottom-left-radius: 20px;
 }
 
+#right-panel-planetarium img{
+  height: 100%;
+  border-radius: 20px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+#right-panel-planetarium {
+  margin: 20px;
+  border-radius: 20px;
+  height: 90%;
+  background-color: #252a32;
+}
+
+#planetarium-pic-frame {
+  background-color: #252a32;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
 #reg-right-panel {
   margin: 0;
   background: linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.50));
@@ -1188,7 +1226,14 @@ a:hover {
   border-bottom-right-radius: 20px;
 }
 
-form#reg-form {
+#reg-left-panel-planetarium {
+  margin: 0;
+  background-color:#252a32;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+form#reg-form, #planetarium-form {
   padding: 40px;
 }
 
@@ -1230,7 +1275,7 @@ form#reg-form {
   font-style: normal;
 }
 
-#full-reg-card {
+#full-reg-card, #full-reg-card-planetarium {
   max-width: 60%;
   margin: auto;
   padding-top: 50px;
@@ -1409,6 +1454,13 @@ details[open] summary::after {
 
 .time-slot-date {
   font-weight: 700;
+}
+
+/* Planetarium */
+
+#Planetarium {
+  background-color: #1C2128;
+  background-image: none;
 }
 
 .hover\:border-white:hover {

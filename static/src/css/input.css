@@ -351,11 +351,15 @@ a:hover {
 /* Styles for the layout */
 .content-container {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: auto;
+  padding: 50px 100px;
+  max-width: 1200px;
 }
 
 .content-container .text-content {
-  width: 50%;
+  width: 100%;
 }
 
 .content-container .form-container {
@@ -387,6 +391,25 @@ a:hover {
   border-bottom-left-radius: 20px;
 }
 
+#right-panel-planetarium img{
+  height: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+#right-panel-planetarium {
+  margin: 20px;
+  border-radius: 20px;
+  height: 90%;
+  background-color: #252a32;
+}
+
+#planetarium-pic-frame {
+  background-color: #252a32;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
 #reg-right-panel {
   margin: 0;
   background: linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.50));
@@ -394,7 +417,14 @@ a:hover {
   border-bottom-right-radius: 20px;
 }
 
-form#reg-form {
+#reg-left-panel-planetarium {
+  margin: 0;
+  background-color:#252a32;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+form#reg-form, #planetarium-form {
   padding: 40px;
 }
 
@@ -424,7 +454,7 @@ form#reg-form {
   @apply barlow-light;
 }
 
-#full-reg-card {
+#full-reg-card, #full-reg-card-planetarium {
   max-width: 60%;
   margin: auto;
   padding-top: 50px;
@@ -546,4 +576,11 @@ details[open] summary::after {
 
 .time-slot-date {
   font-weight: 700;
+}
+
+/* Planetarium */
+
+#Planetarium {
+  background-color: #1C2128;
+  background-image: none;
 }

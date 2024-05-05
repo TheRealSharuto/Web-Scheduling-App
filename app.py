@@ -106,8 +106,9 @@ def register():
                 #commit db and display success message
                 db.commit()
                 flash('Registration successful!', 'success')
+    page_name = 'register'
 
-    return render_template('register.html')
+    return render_template('register.html', page_name=page_name)
 
 
 @app.route('/login', methods=['POST', 'GET'])
@@ -156,7 +157,8 @@ def login():
                 security_logger.info(failed_login_message)
                 flash('Account not found', 'error')
 
-    return render_template('login.html', reg_message=reg_message)
+    page_name = 'login'
+    return render_template('login.html', reg_message=reg_message, page_name=page_name)
 
 def get_available_time_slots(week_date):
     cursor.execute("SELECT time FROM Telescope WHERE date = %s AND UserID IS NULL", (week_date,))
@@ -234,8 +236,10 @@ def telescope_time():
             db.commit()
             print('Successfully reserved');
             return jsonify({'message': 'Reservation successful'})
+        
+    page_name = 'telescope-time'
     
-    return render_template('telescope_time.html')
+    return render_template('telescope_time.html', page_name=page_name)
 
 def convert_to_24_hour(time_str):
     # Parse the time string using strptime
@@ -325,6 +329,8 @@ def update_password():
         db.commit()
         flash("Password updated successfully", "success")
         return redirect(url_for("home"))
+    
+    page_name = 'update-password'
 
     return render_template('update_password.html')
 
@@ -333,8 +339,10 @@ def update_password():
 def home():
     if 'logged_in' in session:
         current_time = datetime.now()
-        return render_template('index.html', current_time=current_time)
+        page_name = 'Home'
+        return render_template('index.html', current_time=current_time, page_name=page_name)
     else:
+        page_name = 'Login'
         return redirect(url_for('login'))
    
 
@@ -369,7 +377,9 @@ def planetarium():
         db.commit()
         flash('Reservation successful!', 'success')
 
-    return render_template('planetarium.html')
+    page_name = 'Planetarium'
+
+    return render_template('planetarium.html', page_name=page_name)
 
 
 @app.route('/logout')
