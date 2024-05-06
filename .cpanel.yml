@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/cmsc495/public_html/astrolab
+    - export DEPLOYPATH=/home/cmsc495/public_html/newastro
     - /bin/cp -r * $DEPLOYPATH
