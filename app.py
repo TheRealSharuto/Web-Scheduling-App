@@ -339,7 +339,7 @@ def update_password():
 def home():
     if 'logged_in' in session:
         current_time = datetime.now()
-        page_name = 'Home'
+        page_name = 'home'
         return render_template('index.html', current_time=current_time, page_name=page_name)
     else:
         page_name = 'Login'
